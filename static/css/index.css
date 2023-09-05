@@ -5,6 +5,10 @@
   --primary-rgb: var(--blue-rgb);
 }
 
+:target {
+  background: #f5f5f5;
+}
+
 html {
   scroll-behavior: smooth;
   align-items: center;
@@ -131,7 +135,4 @@ body {
   border-radius: 0 0 20px 20px; /* Rounded corners at the bottom only */
   margin: 0; /* Remove any default margins to avoid extra spacing */
   text-align: justify;
-}
-:target {
-  background: #f5f5f5;
 }

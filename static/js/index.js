@@ -42,9 +42,7 @@ ScrollReveal().reveal(".game-card", {
   origin: "bottom",
 });
 
-/* Author Text Effect */
-/* -- Text effect -- */
-
+// * Author Text Effect
 const letters2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 let interval2 = null;
