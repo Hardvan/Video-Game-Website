@@ -1,0 +1,25 @@
+{
+  "games": [
+    {
+      "name": "Genshin Impact",
+      "id": "genshinImpact",
+      "website": "https://genshin.hoyoverse.com/en/",
+      "image": "./static/images/Genshin.jpg",
+      "description": "Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ruled by a different god. The story follows the Traveler, an inter-dimensional adventurer who, at the start of the game, is separated from their twin sibling after the two land in Teyvat. Thereafter, the Traveler journeys across the nations of Teyvat in search of the lost sibling, accompanied by their guide, Paimon. Along the way, the two befriend myriad individuals and begin to unravel the mysteries of the land."
+    },
+    {
+      "name": "Brawl Stars",
+      "id": "brawlStars",
+      "website": "https://supercell.com/en/games/brawlstars/",
+      "image": "./static/images/BrawlS.jpg",
+      "description": "In Brawl Stars, players battle against other players or AI opponents in multiple game modes. Players can choose between characters called Brawlers that they have unlocked through Boxes, the Brawl Pass, the Trophy Road, or purchased through the Shop to use in battles. In December 2022, Boxes were removed, and all previous methods to get them were replaced with credits and chroma credits, which are used to unlock Brawlers, who are now mostly placed on the Starr Road."
+    },
+    {
+      "name": "Rocket League",
+      "id": "rocketLeague",
+      "website": "https://www.rocketleague.com/",
+      "image": "./static/images/rocket_league.jpg",
+      "description": "Described as soccer, but with rocket-powered cars, Rocket League has up to eight players assigned to each of the two teams, using rocket-powered vehicles to hit a ball into their opponent's goal and score points over the course of a match. The game includes single-player and multiplayer modes that can be played both locally and online, including cross-platform play between all versions. Later updates for the game enabled the ability to modify core rules and added new game modes, including ones based on ice hockey and basketball."
+    }
+  ]
+}

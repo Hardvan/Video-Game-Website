@@ -47,10 +47,12 @@ def read_files_in_directory(directory='.', file_list=None, output_file='fileCont
 
 if __name__ == "__main__":
 
-    index_html = "./index.html"
-    index_css = "./index.css"
-    index_js = "./index.js"
+    app_py = "./app.py"
+    index_html = "./templates/index.html"
+    index_css = "./static/css.index.css"
+    index_js = "./static/js/index.js"
 
-    file_list = [index_html, index_css, index_js]
+    file_list = [app_py,
+                 index_html]
 
     read_files_in_directory(".", file_list)

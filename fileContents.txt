@@ -1,4 +1,19 @@
-./index.html:
+./app.py:
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+./templates/index.html:
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,8 +21,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Game Website</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="./static/favicon/favicon.png" />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="stylesheet" href="./static/css/author.css" />
 
     <!-- ScrollRevealJS-->
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -34,6 +53,7 @@
       <div id="genshinImpact" class="game">
         <h2 class="game-title">
           <a
+            class="game-link"
             href="https://genshin.hoyoverse.com/en/"
             target="_blank"
             title="Link to Genshin Impact website."
@@ -43,7 +63,7 @@
         </h2>
         <div class="game-card">
           <img
-            src="images/Genshin.jpg"
+            src="./static/images/Genshin.jpg"
             class="gameImg"
             title="Genshin Impact"
             alt="Genshin Impact"
@@ -58,15 +78,17 @@
             search of the lost sibling, accompanied by their guide, Paimon.
             Along the way, the two befriend myriad individuals and begin to
             unravel the mysteries of the land.<sup
-              ><a href="#refer2">[1]</a></sup
+              ><a href="#refer1">[1]</a></sup
             >
           </p>
         </div>
       </div>
+
       <!-- Brawl Stars -->
       <div id="brawlStars" class="game">
         <h2 class="game-title">
           <a
+            class="game-link"
             href="https://supercell.com/en/games/brawlstars/"
             title="Link to Brawl Stars website."
             target="_blank"
@@ -75,7 +97,7 @@
         </h2>
         <div class="game-card">
           <img
-            src="images/BrawlS.jpg"
+            src="./static/images/BrawlS.jpg"
             class="gameImg"
             title="Brawl Stars"
             alt="Brawl Stars"
@@ -88,7 +110,7 @@
             December 2022, Boxes were removed, and all previous methods to get
             them were replaced with credits and chroma credits, which are used
             to unlock Brawlers, who are now mostly placed on the "Starr
-            Road".<sup><a href="#refer3">[2]</a></sup>
+            Road".<sup><a href="#refer2">[2]</a></sup>
           </p>
         </div>
       </div>
@@ -97,6 +119,7 @@
       <div id="rocketLeague" class="game">
         <h2 class="game-title">
           <a
+            class="game-link"
             href="https://www.rocketleague.com/"
             title="Link to Rocket League website."
             target="_blank"
@@ -105,7 +128,7 @@
         </h2>
         <div class="game-card">
           <img
-            src="./images/rocket_league.jpg"
+            src="./static/images/rocket_league.jpg"
             class="gameImg"
             title="Rocket League"
             alt="Rocket League"
@@ -119,8 +142,26 @@
             and online, including cross-platform play between all versions.
             Later updates for the game enabled the ability to modify core rules
             and added new game modes, including ones based on ice hockey and
-            basketball.<sup><a href="#refer1">[3]</a></sup>
+            basketball.<sup><a href="#refer3">[3]</a></sup>
           </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authors -->
+    <div class="screen">
+      <div class="screen-image"></div>
+      <div class="screen-overlay"></div>
+      <div class="screen-content">
+        <i class="screen-icon fa-brands fa-codepen"></i>
+        <div class="screen-user">
+          <span class="name" data-value="Authors">Authors</span>
+          <a class="link" href="https://github.com/Hardvan" target="_blank"
+            >@Hardvan</a
+          >
+          <a class="link" href="https://github.com/Krounosity" target="_blank"
+            >@Krounosity</a
+          >
         </div>
       </div>
     </div>
@@ -161,181 +202,11 @@
         [7]. <a class="Wiki" href="">Wikipedia</a>. Retrieved ------
       </p>
     </div>
+    <button class="btt">Back To Top.</button>
 
     <!-- Custom JS -->
-    <script src="index.js"></script>
+    <script src="./static/js/index.js"></script>
   </body>
 </html>
-
-
-./index.css:
-html {
-  scroll-behavior: smooth;
-  align-items: center;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-/* Header */
-.title {
-  text-align: center;
-  font-family: "Space Mono", monospace;
-  font-size: clamp(3rem, 10vw, 10rem);
-  color: white;
-  padding: 0rem clamp(1rem, 2vw, 3rem);
-  background-color: black;
-  margin-top: 10px;
-  margin-bottom: 100px;
-  margin-left: 100px;
-  margin-right: 100px;
-  border-radius: 20px;
-  transition: 0.5s ease-in-out;
-}
-
-.title:hover {
-  background-color: white;
-  color: black;
-}
-
-/* Table of Contents */
-.ToC {
-  max-width: 720px;
-  margin: 20px auto;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.ToC h2 {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.ToC ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.ToC li {
-  margin-bottom: 10px;
-}
-
-.ToC a {
-  display: block;
-  padding: 10px;
-  font-size: 1.2rem;
-  color: #333;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.ToC a:hover {
-  background-color: #e5e5e5;
-}
-
-/* Games Section */
-.games {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.game {
-  display: grid;
-  flex-direction: column;
-  background-size: cover;
-  justify-content: center;
-}
-
-/* Game Card */
-.game-card {
-  min-width: 300px;
-  max-width: 720px;
-  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
-  border-radius: 20px;
-  transition: all 0.3s;
-  overflow: hidden; /* To ensure the content inside doesn't overflow */
-}
-
-.game-card:hover {
-  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
-}
-
-.game-card img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto; /* Centers the image */
-  width: 100%;
-  height: auto;
-  border-radius: 20px 20px 0 0; /* Rounded corners at the top only */
-}
-
-.game-card p {
-  padding: 1.5rem;
-  font-size: 1.5rem;
-  font-family: "Space Mono", monospace;
-  word-spacing: 0rem;
-  background-color: rgba(218, 246, 246, 0.871);
-  border-radius: 0 0 20px 20px; /* Rounded corners at the bottom only */
-  margin: 0; /* Remove any default margins to avoid extra spacing */
-  text-align: justify;
-}
-:target {
-  background: #f5f5f5;
-}
-
-./index.js:
-// * Hacked Text Effect
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-let interval = null;
-
-document.getElementById("title").onmouseover = (event) => {
-  let iteration = 0;
-
-  clearInterval(interval);
-
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if (index < iteration) {
-          return event.target.dataset.value[index];
-        }
-
-        return letters[Math.floor(Math.random() * 26)];
-      })
-      .join("");
-
-    if (iteration >= event.target.dataset.value.length) {
-      clearInterval(interval);
-    }
-
-    iteration += 1 / 3;
-  }, 30);
-};
-
-// * ScrollReveal
-// Common reveal options to create reveal animations
-ScrollReveal({
-  // reset: true,
-  distance: "60px",
-  duration: 1250,
-  delay: 200,
-});
-
-ScrollReveal().reveal(".game-card", {
-  delay: 300,
-  origin: "bottom",
-});
 
 
