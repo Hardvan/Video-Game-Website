@@ -29,7 +29,7 @@
     <div class="ToC">
       <h2>Table of Contents</h2>
       <ul>
-        {% for g in gamesList %}
+        {% for g in games_list %}
         <li><a href="#{{ g.id }}">{{ g.name }}</a></li>
         {% endfor %}
       </ul>
@@ -38,7 +38,7 @@
     <!-- Main Content -->
     <div class="games">
       <!-- Each Game -->
-      {% for g in gamesList %}
+      {% for g in games_list %}
       <div id="{{ g.id }}" class="game">
         <h2 class="game-title">
           <a
