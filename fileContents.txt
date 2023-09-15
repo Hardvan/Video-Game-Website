@@ -1,18 +1,3 @@
-./app.py:
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
-
-
-@app.route('/')
-def index():
-    return render_template("index.html")
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
-
 ./templates/index.html:
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +10,12 @@ if __name__ == "__main__":
     <link rel="icon" href="./static/favicon/favicon.png" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./static/css/index.css" />
     <link rel="stylesheet" href="./static/css/author.css" />
+    <link rel="stylesheet" href="./static/css/common.css" />
+    <link rel="stylesheet" href="./static/css/game_card.css" />
+    <link rel="stylesheet" href="./static/css/games.css" />
+    <link rel="stylesheet" href="./static/css/header.css" />
+    <link rel="stylesheet" href="./static/css/toc.css" />
 
     <!-- ScrollRevealJS-->
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -41,111 +30,37 @@ if __name__ == "__main__":
     <div class="ToC">
       <h2>Table of Contents</h2>
       <ul>
-        <li><a href="#genshinImpact">Genshin Impact</a></li>
-        <li><a href="#brawlStars">Brawl Stars</a></li>
-        <li><a href="#rocketLeague">Rocket League</a></li>
+        {% for g in games_list %}
+        <li><a href="#{{ g.id }}">{{ g.name }}</a></li>
+        {% endfor %}
       </ul>
     </div>
 
     <!-- Main Content -->
     <div class="games">
-      <!-- Genshin Impact -->
-      <div id="genshinImpact" class="game">
+      <!-- Each Game -->
+      {% for g in games_list %}
+      <div id="{{ g.id }}" class="game">
         <h2 class="game-title">
           <a
             class="game-link"
-            href="https://genshin.hoyoverse.com/en/"
+            href="{{ g.link }}"
             target="_blank"
-            title="Link to Genshin Impact website."
-          >
-            Genshin Impact
-          </a>
-        </h2>
-        <div class="game-card">
-          <img
-            src="./static/images/Genshin.jpg"
-            class="gameImg"
-            title="Genshin Impact"
-            alt="Genshin Impact"
-          />
-          <p class="gamePara">
-            Genshin Impact takes place in the fantasy world of Teyvat, home to
-            seven nations, each of which is tied to a different element and
-            ruled by a different god. The story follows the Traveler, an
-            inter-dimensional adventurer who, at the start of the game, is
-            separated from their twin sibling after the two land in Teyvat.
-            Thereafter, the Traveler journeys across the nations of Teyvat in
-            search of the lost sibling, accompanied by their guide, Paimon.
-            Along the way, the two befriend myriad individuals and begin to
-            unravel the mysteries of the land.<sup
-              ><a href="#refer1">[1]</a></sup
-            >
-          </p>
-        </div>
-      </div>
-
-      <!-- Brawl Stars -->
-      <div id="brawlStars" class="game">
-        <h2 class="game-title">
-          <a
-            class="game-link"
-            href="https://supercell.com/en/games/brawlstars/"
-            title="Link to Brawl Stars website."
-            target="_blank"
-            >Brawl Stars</a
+            title="Link to {{ g.name }} website."
+            >{{ g.name }}</a
           >
         </h2>
         <div class="game-card">
           <img
-            src="./static/images/BrawlS.jpg"
+            src="{{ g.image }}"
             class="gameImg"
-            title="Brawl Stars"
-            alt="Brawl Stars"
+            title="{{ g.name }}"
+            alt="{{ g.name }}"
           />
-          <p class="gamePara">
-            In Brawl Stars, players battle against other players or AI opponents
-            in multiple game modes. Players can choose between characters called
-            Brawlers that they have unlocked through Boxes, the Brawl Pass, the
-            Trophy Road, or purchased through the Shop to use in battles. In
-            December 2022, Boxes were removed, and all previous methods to get
-            them were replaced with credits and chroma credits, which are used
-            to unlock Brawlers, who are now mostly placed on the "Starr
-            Road".<sup><a href="#refer2">[2]</a></sup>
-          </p>
+          <p class="gamePara">{{ g.description }}</p>
         </div>
       </div>
-
-      <!-- Rocket League -->
-      <div id="rocketLeague" class="game">
-        <h2 class="game-title">
-          <a
-            class="game-link"
-            href="https://www.rocketleague.com/"
-            title="Link to Rocket League website."
-            target="_blank"
-            >Rocket League</a
-          >
-        </h2>
-        <div class="game-card">
-          <img
-            src="./static/images/rocket_league.jpg"
-            class="gameImg"
-            title="Rocket League"
-            alt="Rocket League"
-          />
-          <p class="gamePara">
-            Described as "soccer, but with rocket-powered cars", Rocket League
-            has up to eight players assigned to each of the two teams, using
-            rocket-powered vehicles to hit a ball into their opponent's goal and
-            score points over the course of a match. The game includes
-            single-player and multiplayer modes that can be played both locally
-            and online, including cross-platform play between all versions.
-            Later updates for the game enabled the ability to modify core rules
-            and added new game modes, including ones based on ice hockey and
-            basketball.<sup><a href="#refer3">[3]</a></sup>
-          </p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
 
     <!-- Authors -->
@@ -202,11 +117,462 @@ if __name__ == "__main__":
         [7]. <a class="Wiki" href="">Wikipedia</a>. Retrieved ------
       </p>
     </div>
-    <button class="btt">Back To Top.</button>
+
+    <!-- Back to Top Button -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
     <!-- Custom JS -->
     <script src="./static/js/index.js"></script>
   </body>
 </html>
+
+
+./static/css/author.css:
+/* Author */
+.screen {
+  width: 30%;
+  display: flex;
+  border: 3px solid rgb(var(--primary-rgb) / 80%);
+  aspect-ratio: 10 / 16;
+  border-radius: 1rem;
+  background-color: rgb(var(--primary-rgb) / 15%);
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  margin: 2rem auto;
+}
+
+.screen:after,
+.screen:before {
+  content: "";
+  height: 5px;
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  translate: -50% 0%;
+  background-color: white;
+}
+
+.screen:before {
+  width: 15%;
+  top: 0rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.screen:after {
+  width: 25%;
+  bottom: 0rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+@keyframes pan-overlay {
+  from {
+    background-position: 0% 0%;
+  }
+
+  to {
+    background-position: 0% -100%;
+  }
+}
+
+.screen-overlay {
+  background: linear-gradient(
+    rgb(var(--primary-rgb) / 0.15),
+    rgb(var(--primary-rgb) / 0.15) 3px,
+    transparent 3px,
+    transparent 9px
+  );
+  background-size: 100% 9px;
+  height: 100%;
+  width: 100%;
+  animation: pan-overlay 22s infinite linear;
+  position: absolute;
+  z-index: 2;
+  left: 0px;
+  top: 0px;
+}
+
+@keyframes pan-image {
+  0% {
+    background-position: 36% 42%;
+    background-size: 200%;
+  }
+
+  20% {
+    background-position: 30% 35%;
+    background-size: 200%;
+  }
+
+  20.0001% {
+    /* -- View 2 -- */
+    background-position: 60% 85%;
+    background-size: 500%;
+  }
+
+  40% {
+    background-position: 49% 81%;
+    background-size: 500%;
+  }
+
+  40.0001% {
+    /* -- View 3 -- */
+    background-position: 80% 42%;
+    background-size: 300%;
+  }
+
+  60% {
+    background-position: 84% 33%;
+    background-size: 300%;
+  }
+
+  60.0001% {
+    /* -- View 4 -- */
+    background-position: 0% 0%;
+    background-size: 300%;
+  }
+
+  80% {
+    background-position: 15% 4%;
+    background-size: 300%;
+  }
+
+  80.0001% {
+    /* -- View 5 -- */
+    background-position: 80% 10%;
+    background-size: 300%;
+  }
+
+  100% {
+    background-position: 72% 14%;
+    background-size: 300%;
+  }
+}
+
+.screen > .screen-image {
+  background-image: url("https://images.unsplash.com/photo-1515266591878-f93e32bc5937?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80");
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  top: 0px;
+  background-size: 300%;
+  background-position: 0% 0%;
+  filter: sepia(100%) hue-rotate(160deg);
+  opacity: 0.6;
+  animation: pan-image 15s linear infinite;
+}
+
+.screen > .screen-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  gap: 4rem;
+  position: relative;
+  z-index: 3;
+  margin: 1rem;
+  padding-bottom: 6rem;
+  border: 1px solid rgb(var(--primary-rgb) / 50%);
+  border-radius: 0.6rem;
+}
+
+.screen > .screen-content > .screen-icon {
+  color: white;
+  font-size: 4rem;
+  text-shadow: 0px 0px 0.5rem white;
+}
+
+.screen > .screen-content > .screen-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.screen > .screen-content > .screen-user:before,
+.screen > .screen-content > .screen-user:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  background-color: rgb(var(--primary-rgb));
+  border-radius: 1rem;
+  box-shadow: 0px 0px 8px 3px rgb(var(--primary-rgb) / 60%);
+}
+
+.screen > .screen-content > .screen-user:before {
+  height: 2px;
+  width: 50px;
+  translate: -20px -1rem;
+  opacity: 0.75;
+}
+
+.screen > .screen-content > .screen-user:after {
+  height: 3px;
+  width: 30px;
+  translate: 26px calc(-1rem - 0.5px);
+}
+
+.screen > .screen-content > .screen-user > :is(.name, .link) {
+  font-family: "Source Code Pro", monospace;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.screen > .screen-content > .screen-user > .name {
+  position: relative;
+  font-size: 4.25rem;
+  font-weight: 400;
+}
+
+.screen > .screen-content > .screen-user > .name:before,
+.screen > .screen-content > .screen-user > .name:after {
+  content: "";
+  height: 4px;
+  width: 4px;
+  position: absolute;
+  border: 2px solid white;
+  border-radius: 2px;
+}
+
+.screen > .screen-content > .screen-user > .name:before {
+  top: 55%;
+  right: -1.5rem;
+}
+
+.screen > .screen-content > .screen-user > .name:after {
+  top: 45%;
+  left: -1.5rem;
+}
+
+.screen > .screen-content > .screen-user > .link {
+  opacity: 0.8;
+  font-size: 1.5rem;
+  text-shadow: 0px 0px 0.5rem white;
+  font-weight: 400;
+  letter-spacing: 0.3rem;
+  text-decoration: none;
+}
+
+.screen > .screen-content > .screen-user > .link:is(:hover, :focus) {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .screen {
+    scale: 0.6;
+    margin-bottom: 0rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .screen {
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
+
+
+./static/css/common.css:
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --background-rgb: 29 30 34;
+  --blue-rgb: 33 150 243;
+  --primary-rgb: var(--blue-rgb);
+}
+
+:target {
+  background: rgba(var(--primary-rgb), 0.1);
+}
+
+
+./static/css/game_card.css:
+/* game_card.css */
+
+.game-card {
+  min-width: 300px;
+  max-width: 720px;
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+  border-radius: 20px;
+  transition: all 0.3s;
+  overflow: hidden;
+  font-family: "Lato", sans-serif;
+}
+
+.game-card:hover {
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+}
+
+.game-card img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  border-radius: 20px 20px 0 0;
+}
+
+.game-card p {
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  font-family: "Space Mono", monospace;
+  word-spacing: 0rem;
+  background-color: rgba(218, 246, 246, 0.871);
+  border-radius: 0 0 20px 20px;
+  margin: 0;
+  text-align: justify;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #3b65f2;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+#myBtn:hover {
+  background-color: #1f3d9a; /* Darken the background color on hover */
+}
+
+@media (max-width: 600px) {
+  .game-card {
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  .game-card p {
+    font-size: 1rem;
+  }
+}
+
+
+./static/css/games.css:
+/* games.css */
+
+.games {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.game {
+  display: grid;
+  flex-direction: column;
+  background-size: cover;
+  justify-content: center;
+}
+
+.game-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.game-link {
+  color: #21ac62;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.game-link:hover {
+  color: #3700ff;
+}
+
+
+./static/css/header.css:
+html {
+  scroll-behavior: smooth;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(3rem, 10vw, 10rem);
+  color: white;
+  padding: 0rem clamp(1rem, 2vw, 3rem);
+  background-color: black;
+  margin: 10px;
+  border-radius: 10px;
+  transition: 0.5s ease-in-out;
+}
+
+.title:hover {
+  background-color: white;
+  color: black;
+}
+
+
+./static/css/toc.css:
+.ToC {
+  max-width: 720px;
+  margin: 20px auto;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ToC h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: "Poppins", sans-serif;
+}
+
+.ToC ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ToC li {
+  margin-bottom: 10px;
+}
+
+.ToC a {
+  display: block;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.ToC a:hover {
+  background-color: #e5e5e5;
+}
+
+@media (max-width: 600px) {
+  .ToC {
+    margin: 20px 10px;
+  }
+}
 
 

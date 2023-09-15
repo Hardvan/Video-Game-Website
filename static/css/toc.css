@@ -1,17 +1,18 @@
 .ToC {
   max-width: 720px;
   margin: 20px auto;
-  background-color: #f5f5f5;
+  background-color: #292b31; /* Dark background color */
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
 }
 
 .ToC h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem; /* Larger font size */
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Increased margin */
   font-family: "Poppins", sans-serif;
+  color: #fff; /* White text color */
 }
 
 .ToC ul {
@@ -21,21 +22,23 @@
 }
 
 .ToC li {
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Increased margin between items */
 }
 
 .ToC a {
   display: block;
-  padding: 10px;
-  font-size: 1.2rem;
-  color: #333;
+  padding: 12px 20px; /* Padding adjustments */
+  font-size: 1.4rem; /* Slightly larger font size */
+  color: #fff;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s;
+  background-color: #3b65f2; /* Blue background color */
 }
 
 .ToC a:hover {
-  background-color: #e5e5e5;
+  background-color: #1f3d9a; /* Darker blue on hover */
+  color: #fff;
 }
 
 @media (max-width: 600px) {

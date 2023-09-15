@@ -48,11 +48,25 @@ def read_files_in_directory(directory='.', file_list=None, output_file='fileCont
 if __name__ == "__main__":
 
     app_py = "./app.py"
+
     index_html = "./templates/index.html"
-    index_css = "./static/css.index.css"
+
+    author_css = "./static/css/author.css"
+    common_css = "./static/css/common.css"
+    game_card_css = "./static/css/game_card.css"
+    games_css = "./static/css/games.css"
+    header_css = "./static/css/header.css"
+    toc_css = "./static/css/toc.css"
+
     index_js = "./static/js/index.js"
 
-    file_list = [app_py,
-                 index_html]
+    file_list = [index_html,
+                 author_css,
+                 common_css,
+                 game_card_css,
+                 games_css,
+                 header_css,
+                 toc_css
+                 ]
 
     read_files_in_directory(".", file_list)
