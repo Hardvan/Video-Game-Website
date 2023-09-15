@@ -1,3 +1,6 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 :root {
   --background-rgb: 29 30 34;
 
@@ -22,7 +25,7 @@ body {
 /* Header */
 .title {
   text-align: center;
-  font-family: "Space Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: clamp(3rem, 10vw, 10rem);
   color: white;
   padding: 0rem clamp(1rem, 2vw, 3rem);
@@ -50,6 +53,7 @@ body {
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 15px;
+  font-family: "Poppins", sans-serif;
 }
 .ToC ul {
   list-style: none;
@@ -110,6 +114,7 @@ body {
   border-radius: 20px;
   transition: all 0.3s;
   overflow: hidden; /* To ensure the content inside doesn't overflow */
+  font-family: "Lato", sans-serif;
 }
 .game-card:hover {
   box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
