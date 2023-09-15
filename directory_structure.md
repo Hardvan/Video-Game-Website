@@ -1,0 +1,32 @@
+# Directory Structure
+
+- 📂 **Video Game Website (Current Directory)**
+  - [.gitignore](./.gitignore)
+  - [app.py](./app.py)
+  - [directory_structure.md](./directory_structure.md)
+  - [directory_structure.txt](./directory_structure.txt)
+  - [DirecTracer.py](./DirecTracer.py)
+  - [fileContents.txt](./fileContents.txt)
+  - [FileReader.py](./FileReader.py)
+  - [README.md](./README.md)
+  - [requirements.txt](./requirements.txt)
+- 📂 **static**
+  - 📂 **css**
+    - [author.css](static/css/author.css)
+    - [common.css](static/css/common.css)
+    - [games.css](static/css/games.css)
+    - [game_card.css](static/css/game_card.css)
+    - [header.css](static/css/header.css)
+    - [toc.css](static/css/toc.css)
+  - 📂 **favicon**
+    - [favicon.png](static/favicon/favicon.png)
+  - 📂 **images**
+    - [BrawlS.jpg](static/images/BrawlS.jpg)
+    - [Genshin.jpg](static/images/Genshin.jpg)
+    - [rocket_league.jpg](static/images/rocket_league.jpg)
+  - 📂 **js**
+    - [index.js](static/js/index.js)
+  - 📂 **json**
+    - [gamesData.json](static/json/gamesData.json)
+- 📂 **templates**
+  - [index.html](templates/index.html)

@@ -1,0 +1,30 @@
+📂 Video Game Website (Current Directory)
+  - .gitignore
+  - app.py
+  - directory_structure.md
+  - directory_structure.txt
+  - DirecTracer.py
+  - fileContents.txt
+  - FileReader.py
+  - README.md
+  - requirements.txt
+📂 static
+	📂 css
+	  - author.css
+	  - common.css
+	  - games.css
+	  - game_card.css
+	  - header.css
+	  - toc.css
+	📂 favicon
+	  - favicon.png
+	📂 images
+	  - BrawlS.jpg
+	  - Genshin.jpg
+	  - rocket_league.jpg
+	📂 js
+	  - index.js
+	📂 json
+	  - gamesData.json
+📂 templates
+  - index.html
