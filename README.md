@@ -13,6 +13,10 @@ A practice website to teach the ropes and collaborate using Git & GitHub with [K
 - JavaScript
 - Flask (will be added later)
 
+## Project Structure
+
+To view the project structure (files and folders organization), click [here](./directory_structure.md).
+
 ## Installation
 
 1. Clone the repo
