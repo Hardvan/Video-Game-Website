@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 # Load the gamesData.json file
 import json
 
-with open("gamesData.json", "r") as f:
+with open("./static/json/gamesData.json", "r") as f:
 
     # Load the gamesData.json file
     gamesData = json.load(f)
