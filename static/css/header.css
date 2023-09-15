@@ -1,0 +1,26 @@
+html {
+  scroll-behavior: smooth;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(3rem, 10vw, 10rem);
+  color: white;
+  padding: 0rem clamp(1rem, 2vw, 3rem);
+  background-color: black;
+  margin: 10px;
+  border-radius: 10px;
+  transition: 0.5s ease-in-out;
+}
+
+.title:hover {
+  background-color: white;
+  color: black;
+}
