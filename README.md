@@ -34,7 +34,7 @@ To view the project structure (files and folders organization), click [here](./d
 3. Create a virtual python environment by typing the following in the terminal
 
    ```bash
-   python -m venv venv
+   python -m venv .venv
    ```
 
 4. Activate the virtual environment
